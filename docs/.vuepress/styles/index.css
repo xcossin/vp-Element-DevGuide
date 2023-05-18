@@ -1,0 +1,13 @@
+/* 默认基础样式css文件 */
+.page{
+    padding-left: 12rem !important;
+}
+.sidebar{
+    width: 15rem !important;
+}
+.theme-default-content:not(.custom){
+    max-width: 800px;
+}
+.theme-default-content:not(.custom), .page-meta, .page-nav {
+    padding-right: 3rem !important;
+}
