@@ -1,1 +1,11 @@
 /* 自定义css样式 */
+
+/* echarts 深色背景*/
+.chart-dark-bg{
+  background: #061C4C;
+}
+
+/* echarts 浅色背景 */
+.chart-light-bg{
+  background: #FFFFFF;
+}

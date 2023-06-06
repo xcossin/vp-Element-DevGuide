@@ -1,10 +1,42 @@
+# Echarts 模块说明
 
+## 介绍
+::: tip 提示
+本段来自ChatGPT
+:::
 
+开发文档介绍：
+
+欢迎使用我们为 ECharts 准备的开发文档！这个文档的主要目的是为了帮助开发人员更好地理解和使用 ECharts 的 option 配置。option 是 ECharts 中最重要的配置项之一，它定义了图表的样式、数据、交互等方面的属性。
+
+我们的文档将详细介绍 option 的各个方面，包括标题、坐标轴、图例、系列、工具箱等内容。每个部分都会提供具体的配置选项和示例代码，以便您快速上手。
+
+无论您是初学者还是有一定经验的开发人员，我们相信这个开发文档都能为您提供清晰、详细的说明，帮助您快速上手使用 ECharts，定制出令人满意的图表。
+
+我们会持续更新和完善这个开发文档，以确保与最新版本的 ECharts 保持一致。如果您在使用文档过程中有任何问题或建议，欢迎随时与我们交流。
+
+祝您在使用 ECharts 开发出精美图表的过程中取得成功！
+
+## 目录说明
+Echarts案例模块初步计划先分为以下三个类型
+1. 柱状图(Bar)
+2. 折线图(Line)
+3. 饼图(Pie)
+
+而每个类型的配置将从以下7个方面进行说明
+1. 标题(Title)
+2. 坐标轴(Axis)
+3. 图例(Legend)
+4. 系列(Series)
+5. 悬浮窗(Tooltip)
+6. 工具箱(ToolBox)
+
+___
 ::: demo 
 ```html
 <template>
   <div class="wrap">
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" class="module-chart " ></div>
   </div>
 </template>
 
@@ -39,6 +71,7 @@
       this.myEcharts()
     },
     methods:{
+      // 初始化图标
       myEcharts(){
         let myChart = this.$echarts.init(document.getElementById('main'));
         myChart.setOption(this.options)
@@ -46,5 +79,11 @@
     }
   }
 </script>
+<style>
+.module-chart{
+  width:100%;
+  height:400px;
+}
+</style>
 ```
 :::

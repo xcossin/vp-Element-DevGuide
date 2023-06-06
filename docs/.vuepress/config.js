@@ -54,10 +54,19 @@ module.exports = {
         link: '/components/Echarts/'
       },
       {
-        text: '地址',
+        text: '项目地址',
         items: [
           { text: 'github', link: 'https://github.com/xcossin/vp-Element-DevGuide.git' },
           { text: 'gitee', link: '/language/c' }
+        ]
+      },
+      {
+        text: '三方库地址',
+        items: [
+          { text: 'Echarts', link: 'https://echarts.apache.org/examples/zh/index.html' },
+          { text: 'Element UI', link: 'https://element.eleme.cn/#/zh-CN/component/installation' },
+          { text: 'VuePress v1.x', link: 'https://vuepress.vuejs.org/zh/' },
+          { text: 'MarkDown语法', link: 'https://www.5axxw.com/wiki/content/xbl296' },
         ]
       },
     ],
@@ -110,6 +119,26 @@ module.exports = {
             '/components/Element-fun/Button.md',
             '/components/Element-fun/Upload.md',
             '/components/Element-fun/Tree.md',
+          ]
+        },
+      ],
+      '/components/Echarts/': [
+        {
+          title: 'Echarts案例',
+          // 是否折叠 false - 打开 true 关闭  默认第一个分组自动为打开
+          collapsable: true,
+          children: [
+            '/components/Echarts/',
+            {
+              title:'柱状图',
+              children:[
+                '/components/Echarts/Bar/',
+                '/components/Echarts/Bar/BarAxis.md',
+                '/components/Echarts/Bar/BarLegend.md',
+              ],
+            },
+            '/components/Echarts/Line.md',
+            '/components/Echarts/Pie.md',
           ]
         },
       ]
