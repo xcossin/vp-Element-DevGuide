@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
   } */
+/* 重置ul的上下边距 */
+body ul{
+    margin-block-start:0;
+    margin-block-end:0
+}
 
 /* 默认基础样式css文件 */
 .page{

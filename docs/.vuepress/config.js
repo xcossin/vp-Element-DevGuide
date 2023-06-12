@@ -41,12 +41,12 @@ module.exports = {
         text: '指南',
         link: '/guide/'
       },
-      {
+      /* {
         text: 'Element样式案例',
         link: '/components/Element-sty/'
-      },
+      }, */
       {
-        text: 'Element功能案例',
+        text: 'Element案例',
         link: '/components/Element-fun/'
       },
       {

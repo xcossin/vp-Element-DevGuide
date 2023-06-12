@@ -9,88 +9,149 @@
 <template>
   <div class="wrap">
     <div class="chart-operation">
-      <el-button type="primary" @click="showAxisLineShow('X')">X轴线</el-button>
+      <!-- <el-button type="primary" @click="showAxisLineShow('X')">X轴线</el-button>
       <el-button type="primary" @click="showAxisLineShow('Y')">Y轴线</el-button>
       <el-button type="success" @click="showSplitLine('X')">X轴网格线</el-button>
       <el-button type="success" @click="showSplitLine('Y')">Y轴网格线</el-button>
       <el-button type="info" @click="showTick('X')">X轴刻度线</el-button>
-      <el-button type="info" @click="showTick('Y')">Y轴刻度线</el-button>
+      <el-button type="info" @click="showTick('Y')">Y轴刻度线</el-button> -->
     </div>
     <div id="main" class="chart-bar"></div>
   </div>
 </template>
 
 <script>
+  const echarts = require('echarts');
   export default {
     data() {
       return {
-        options: {
-          // 背景颜色
-          backgroundColor: '#061C4C',
-          title: {
-            text: 'ECharts 入门示例 - 坐标轴'
+        newOptions:require('./js/BarLegendOption.js'),
+        options:{},
+        myChart:null,
+        newOption:{
+    // 背景颜色
+    backgroundColor: '#061C4C',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      backgroundColor: 'rgba(13, 41, 102, 0.8)',
+      borderColor: 'transparent',
+      textStyle: {
+        color: '#fff',
+        fontSize: 16,
+        fontFamily: 'Noto Sans SC'
+      },
+    },
+    grid: {
+      top: '25%',
+      right: '15%',
+      left: "15%",
+      bottom: '25%'
+    },
+    xAxis: [{
+      // name: "月份",
+      type: 'category',
+      // data: ["一月","二月","三月","四月","五月"],
+      axisLine: {
+        lineStyle: {
+          color: '#FFFFFF'
+        }
+      },
+      axisLabel: {
+          margin: 10,
+          color: '#e2e9ff',
+          textStyle: {
+              fontSize: 12
           },
-          tooltip: {},
-          legend: {
-            data:['销量']
-          },
-          xAxis: {
-            // 控制 X 轴线是否显示
-            axisLine: {
-              show:true,
-            },
-            // 控制 X 轴刻度是否显示
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              // 控制与X轴相交轴线显示
-              show: false,
-
-            },
-            // 网格线斑马纹
-            splitArea: {
-              show: true,
-              areaStyle: {
-                color: ['rgba(250,250,250,0.05)', 'rgba(250,250,250,0.0)']
-              }
-            },
-            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-          },
-          yAxis: {
-            // 控制 Y 轴线是否显示
-            axisLine: {
-              show:true,
-            },
-            // 控制 Y 轴刻度是否显示
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              // 控制与Y轴相交轴线显示
-              show: false,
-            }
-          },
-          series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }]
-        },
-        myChart:null
+      },
+      axisTick: {
+          show: false
+      }
+    }],
+    yAxis: [{
+      name: "单位:万套",
+      // splitNumber:4,
+      interval:25, 
+      // rgba(230, 247, 255, 0.7)
+      nameTextStyle:{
+        color:'rgba(230, 247, 255, 0.7)',
+        fontSize:12,
+        fontFamily: 'Noto Sans SC',
+      },
+      axisLabel: {
+        formatter: '{value}',
+        textStyle:{
+          color: '#e2e9ff',
+          fontFamily: 'DIN',
+        }
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: false,
+        lineStyle: {
+          color: '#FFFFFF'
+        }
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          type: [5, 5],
+          color: '#223464'
+        }
+      },
+    }],
+    series: [{
+      name:'总数',
+      type: 'bar',
+      // data: [2000,1520,1850,3400,2756],
+      barWidth: 20,
+      itemStyle: {
+        normal: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              offset: 0,
+              color: '#0EECE4' // 0% 处的颜色
+          }, {
+              offset: 1,
+              color: '#058FE7' // 100% 处的颜色
+          }], false),
+          // shadowColor: 'rgba(0,160,221,1)',
+          // shadowBlur: 4,
+        }
+      },
+      label: {
+        normal: {
+            show: false
+        }
+    },
+    data:[
+      {name:'1月',value:90},
+      {name:'2月',value:75},
+      {name:'3月',value:45},
+      {name:'4月',value:70},
+      {name:'5月',value:52}]
+    }],
+}
       }
     },
     created(){
 
     },
     mounted(){
-      this.myEcharts()
+      const option = require('./js/BarLegendOption.js');
+      this.myEcharts(option)
+      
     },
     methods:{
       /* 初始化echarts图标 */
-      myEcharts(){
+      myEcharts(options){
+        // console.log(options)
         this.myChart = this.$echarts.init(document.getElementById('main'));
-        this.myChart.setOption(this.options)
+        console.log('options',options)
+        this.myChart.setOption(this.newOption)
       },
       /* 控制X轴和Y轴的网格线显示 */
       showSplitLine(axisType){

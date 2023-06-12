@@ -69,10 +69,9 @@
 ```
 :::
 
-## 可选择
+## 可选择二级Tree的子节点选中状态
 
-适用于需要选择层级时使用。
-获取点击节点的选中事件
+适用于需要选择层级时使用。获取二级节点的选中状态
 
 ::: demo
 ```html
@@ -98,8 +97,11 @@
       return {
         testList:require('./testData/layer-data.js'),
         layerList:[],
+        // 
         defaultProps: {
+          // 指定子树为节点对象的某个属性值
           children: 'data',
+          // 指定节点标签为节点对象的某个属性值
           label: 'information'
         },
         checkedKeys: []
@@ -110,8 +112,11 @@
       this.layerList = this.testList
     },
     methods: {
-      checkChange (data, checked, indeterminate) {
+      // 当复选框被点击的时候触发
+      // 共两个参数，依次为：传递给 data 属性的数组中该节点所对应的对象、树目前的选中状态对象，包含 checkedNodes、checkedKeys、halfCheckedNodes、halfCheckedKeys 四个属性
+      checkChange (data, checked) {
         console.log('data',data)
+        console.log('checked',checked)
         const isCheck = this.$refs.tree.getCheckedNodes().indexOf(data) > -1
         console.log('isCheck 选中状态',isCheck)
         if (data.data) return
@@ -120,5 +125,117 @@
     }
   }
 </script>
+```
+:::
+
+::: details 点击查看案例数据
+```js
+[
+  {
+    "id": 1,
+    "information": "点位",
+    "data": [
+      {
+        "id": 14,
+        "information": "公交车",
+        "judge": 0
+      },
+      {
+        "id": 13,
+        "information": "监控",
+        "judge": 0
+      },
+      {
+        "id": 12,
+        "information": "停车场",
+        "judge": 0
+      },
+      {
+        "id": 11,
+        "information": "卡口",
+        "judge": 0
+      },
+      {
+        "id": 10,
+        "information": "信号机",
+        "judge": 0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "information": "警力",
+    "data": [
+      {
+        "id": 24,
+        "information": "对讲机",
+        "judge": 1
+      },
+      {
+        "id": 23,
+        "information": "岗位",
+        "judge": 0
+      },
+      {
+        "id": 22,
+        "information": "铁骑",
+        "judge": 1
+      },
+      {
+        "id": 21,
+        "information": "警车",
+        "judge": 1
+      },
+      {
+        "id": 20,
+        "information": "警员",
+        "judge": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "information": "路况",
+    "data": [
+      {
+        "id": 30,
+        "information": "路况",
+        "judge": 0
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "information": "层级",
+    "data": [
+      {
+        "id": 40,
+        "information": "卫星地图",
+        "judge": 0
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "information": "预警",
+    "data": [
+      {
+        "id": 52,
+        "information": "预警",
+        "judge": 0
+      },
+      {
+        "id": 51,
+        "information": "拥堵",
+        "judge": 0
+      },
+      {
+        "id": 50,
+        "information": "事故",
+        "judge": 0
+      }
+    ]
+  }
+]
 ```
 :::

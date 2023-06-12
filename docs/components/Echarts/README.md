@@ -1,11 +1,10 @@
 # Echarts 模块说明
 
 ## 介绍
-::: tip 提示
-本段来自ChatGPT
+::: tip 提示 
+本文由ChatGPT生成
 :::
 
-开发文档介绍：
 
 欢迎使用我们为 ECharts 准备的开发文档！这个文档的主要目的是为了帮助开发人员更好地理解和使用 ECharts 的 option 配置。option 是 ECharts 中最重要的配置项之一，它定义了图表的样式、数据、交互等方面的属性。
 
@@ -87,3 +86,8 @@ ___
 </style>
 ```
 :::
+
+## 特别说明
+由于vuePress v1.x插件**vuepress-plugin-demo-container**生成的代码块中不支持import语法，所以在需要使用import语法的地方笔者最初考虑了两种方式
+1. 将option配置放在js文件，import语法放在js文件进行，通过require导入该js文件。但是这条方案最大的问题就是js文件的内容无法在代码块中展示，该方案只考虑导入大批量测试数据时使用。
+2. 在代码块中用require将import替代，解决了文件的内容无法在代码块中展示的问题，目前来看是支持导入echarts的，后续有问题再补充。
