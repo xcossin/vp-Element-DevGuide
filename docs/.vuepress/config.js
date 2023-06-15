@@ -1,3 +1,4 @@
+const moment = require('moment');
 module.exports = {
   theme: '',
   title: '数字花园',
@@ -15,6 +16,7 @@ module.exports = {
       lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
       title: '数字花园',
       description: 'Vue 驱动的静态网站生成器',
+      lastUpdated: '上次更新',
       // 配置demo-block的的中文显示
       "demo-block": {
         "hide-text": "隐藏代码",
@@ -32,14 +34,44 @@ module.exports = {
   themeConfig: {
     // 左上角logo
     logo: '/index/logo.png',
+    // 最后更新时间
+    lastUpdated: '最后更新时间', // string | boolean
+    // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
+    nextLinks: true,
+    // 默认值是 true 。设置为 false 来禁用所有页面的 上一篇 链接
+    prevLinks: true,
+    // 页面滚动
+    // smoothScroll: true,
+    // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
+    // repo: 'https://github.com/xcossin/vp-Element-DevGuide.git',
+    // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
+    // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
+    // repoLabel: '查看源码',
+
+    // 以下为可选的编辑链接选项
+
+    // 假如你的文档仓库和项目本身不在一个仓库：
+    // docsRepo: 'vuejs/vuepress',
+    // 假如文档不是放在仓库的根目录下：
+    // docsDir: 'docs',
+    // 假如文档放在一个特定的分支下：
+    // docsBranch: 'master',
+    // 默认是 false, 设置为 true 来启用
+    editLinks: false,
+    // 默认为 "Edit this page"
+    editLinkText: '在 GitHub 上查看此页源码！',
     nav: [
       {
         text: '首页',
         link: '/'
       },
       {
+        text: '插件',
+        link: '/Navbar/plugin/'
+      },
+      {
         text: '指南',
-        link: '/guide/'
+        link: '/Navbar/guide/'
       },
       /* {
         text: 'Element样式案例',
@@ -71,8 +103,8 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/guide/': [
-        '/guide/',
+      '/Navbar/guide/': [
+        '/Navbar/guide/',
         /* {
           title: '文档指南',
           // 是否折叠 false - 打开 true 关闭  默认第一个分组自动为打开
@@ -158,13 +190,37 @@ module.exports = {
   },
   head: [],
   plugins: [
-    // 代码块折叠
-    // 'demo-container',
-    // 回到顶部按钮
-    '@vuepress/back-to-top',
     // 详细配置格式
     // ['',{}],
+    // 回到顶部按钮
+    '@vuepress/back-to-top',
+    // 一个基于 nprogress 的进度条插件。
+    '@vuepress/nprogress',
+    // 代码块折叠
     ['demo-container',{}],
+    // 最后更新时间插件
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).fromNow()
+        },
+        lang:'最后更新时间'
+      }
+    ],
+    // 樱花动效
+    ["sakura", {
+      num: 20,  // 默认数量
+      show: true, //  是否显示
+      zIndex: 999999999,   // 层级
+      img: {
+        replace: false,  // false 默认图 true 换图 需要填写httpUrl地址
+        httpUrl: '...'     // 绝对路径
+      }     
+    }]
   ],
   markdown: {},
   // 出现 global is not defined 加了此属性

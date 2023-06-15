@@ -3,6 +3,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // 必须通过这种import * as一次性导入全部模块的方式引入echarts
 import * as echarts from 'echarts';
+// 注入版权信息
+import copy from './common/copy'
+// TODO:格式要微调
 
 // 引入基础样式重置文件
 import './styles/index.css'
@@ -19,5 +22,12 @@ export default async ({
   // ...做一些其他的应用级别的优化
   if (typeof process === 'undefined') {
     // Vue.use(ElementUI)
+  }
+  try {
+    document && (() => { //对document的判断是防止编译的时候报错
+      copy()
+    })()
+  } catch (e) {
+    console.error(e.message)
   }
 }

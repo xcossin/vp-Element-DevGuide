@@ -10,11 +10,19 @@
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.9.9"
+    "@vuepress/plugin-back-to-top": "^1.9.9",
+    "@vuepress/plugin-nprogress": "^1.9.9",
+    "@xiaopanda/vuepress-plugin-code-copy": "^1.0.3",
+    "vuepress-plugin-copyright": "^1.0.2",
+    "vuepress-plugin-cursor-effects": "^1.1.6",
+    "vuepress-plugin-dynamic-title": "^1.0.0",
+    "vuepress-plugin-git-log": "^1.0.1",
+    "vuepress-plugin-sakura": "^1.2.1"
   },
   "dependencies": {
     "echarts": "^5.4.2",
     "element-ui": "^2.15.13",
+    "moment": "^2.29.4",
     "vuepress": "^1.9.9",
     "vuepress-plugin-demo-container": "^0.2.0"
   }
