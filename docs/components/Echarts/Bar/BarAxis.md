@@ -281,7 +281,7 @@ x轴y轴在echarts配置项里，从内容上来说大体没有太大区别，x�
             // 控制 Y 轴线是否显示
             axisLine: {
               show:true,
-              symbol:['none', 'arrow'],//加箭头处
+              symbol:['none', 'arrow'], // 加箭头处
 			        symbolOffset: 30,//使箭头偏移
               lineStyle: {
                 // color: "black",         //设置y轴的颜色

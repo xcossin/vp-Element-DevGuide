@@ -131,13 +131,24 @@ module.exports = {
             '/components/Echarts/',
             {
               title:'柱状图',
+              collapsable: true,
               children:[
                 '/components/Echarts/Bar/',
                 '/components/Echarts/Bar/BarAxis.md',
                 '/components/Echarts/Bar/BarLegend.md',
+                '/components/Echarts/Bar/Series.md',
+                '/components/Echarts/Bar/ToolBox.md',
+                '/components/Echarts/Bar/Tooltip.md',
               ],
             },
-            '/components/Echarts/Line.md',
+            {
+              title:'折线图',
+              children:[
+                '/components/Echarts/Line/',
+                '/components/Echarts/Line/Line.md',
+              ],
+            },
+            // '/components/Echarts/Line.md',
             '/components/Echarts/Pie.md',
           ]
         },

@@ -21,3 +21,12 @@ body ul{
 .theme-default-content:not(.custom), .page-meta, .page-nav {
     padding-right: 3rem !important;
 }
+
+
+/* 设置可折叠侧边栏二级标题颜色 */
+.sidebar-group .sidebar-heading{
+    opacity:1 !important;
+}
+.sidebar-group .sidebar-heading span{
+    color:#2c3e50;
+}
