@@ -16,7 +16,7 @@ body ul{
     width: 15rem !important;
 }
 .theme-default-content:not(.custom){
-    max-width: 930px !important;
+    /* max-width: 930px !important; */
 }
 .theme-default-content:not(.custom), .page-meta, .page-nav {
     padding-right: 3rem !important;

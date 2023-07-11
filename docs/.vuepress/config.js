@@ -32,6 +32,9 @@ module.exports = {
     } */
   },
   themeConfig: {
+    '/zh/': {
+      sidebar: 'auto'
+    },
     // 左上角logo
     logo: '/index/logo.png',
     // 最后更新时间
@@ -66,12 +69,16 @@ module.exports = {
         link: '/'
       },
       {
-        text: '插件',
-        link: '/Navbar/plugin/'
-      },
-      {
         text: '指南',
         link: '/Navbar/guide/'
+      },
+      {
+        text: 'JS',
+        link: '/components/JsFun/'
+      },
+      {
+        text: '插件',
+        link: '/Navbar/plugin/'
       },
       /* {
         text: 'Element样式案例',
@@ -103,8 +110,24 @@ module.exports = {
       },
     ],
     sidebar: {
+      // '/Navbar/plugin/': [
+      //   '/Navbar/plugin/',
+      // ],
       '/Navbar/guide/': [
         '/Navbar/guide/',
+        /* {
+          title: '文档指南',
+          // 是否折叠 false - 打开 true 关闭  默认第一个分组自动为打开
+          collapsable: true,
+          children: [
+            '/guide/',
+          ]
+        }, */
+      ],
+      '/components/JsFun/': [
+        '/components/JsFun/',
+        '/components/JsFun/jsFun',
+        '/components/JsFun/jsData',
         /* {
           title: '文档指南',
           // 是否折叠 false - 打开 true 关闭  默认第一个分组自动为打开
@@ -171,6 +194,7 @@ module.exports = {
                 '/components/Echarts/Bar/Series.md',
                 '/components/Echarts/Bar/ToolBox.md',
                 '/components/Echarts/Bar/Tooltip.md',
+                '/components/Echarts/Bar/BarStyle.md',
               ],
             },
             {
@@ -212,7 +236,7 @@ module.exports = {
       }
     ],
     // 樱花动效
-    ["sakura", {
+    /* ["sakura", {
       num: 20,  // 默认数量
       show: true, //  是否显示
       zIndex: 999999999,   // 层级
@@ -220,8 +244,8 @@ module.exports = {
         replace: false,  // false 默认图 true 换图 需要填写httpUrl地址
         httpUrl: '...'     // 绝对路径
       }     
-    }]
-  ],
+    }] */
+  ], 
   markdown: {},
   // 出现 global is not defined 加了此属性
   configureWebpack: {

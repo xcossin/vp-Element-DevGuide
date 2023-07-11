@@ -25,7 +25,7 @@ export default async ({
   }
   try {
     document && (() => { //对document的判断是防止编译的时候报错
-      copy()
+      // copy()
     })()
   } catch (e) {
     console.error(e.message)

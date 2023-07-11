@@ -91,7 +91,7 @@ ___
 ::: tip 说明
 由于vuePress v1.x插件**vuepress-plugin-demo-container**代码块插件中不支持import语法，而部分案例代码过长，为了便于案例折叠展示采用了[demo-container](https://docs.chenjianhui.site/vuepress-plugin-demo-container/zh/)插件的代码块折叠功能。而该插件不支持import语法。
 所以笔者在需要使用import语法的地方采用了两种方案替代
-1. 将option配置放在js文件，import语法放在js文件进行，通过require导入该js文件。但是这条方案最大的问题就是js文件的内容无法在代码块中展示，该方案只考虑导入大量测试数据时使用。
+1. 将option配置放在js文件，import语法放在js文件进行，通过require导入该js文件。但是该方案最大的问题就是js文件的内容无法在代码块中展示，该方案只考虑导入大量测试数据时使用。
 2. 在代码块中用require将import替代，解决了文件的内容无法在代码块中展示的问题，目前来看是支持导入echarts的，后续有问题再补充。
 
 <font color="red">注意:</font>一些原本在各个开发文档中表明的import方法改为使用require代替，为避免误导特此说明，请在自己的项目中根据实际情况参考使用官方文档提供的语法。

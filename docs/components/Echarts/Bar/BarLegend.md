@@ -1,21 +1,12 @@
 # 柱状图 - 图例
 
-<!-- ```
 
-``` -->
 ## 图例(Legend)
 ::: demo 
 ```html
 <template>
   <div class="wrap">
-    <div class="chart-operation">
-      <!-- <el-button type="primary" @click="showAxisLineShow('X')">X轴线</el-button>
-      <el-button type="primary" @click="showAxisLineShow('Y')">Y轴线</el-button>
-      <el-button type="success" @click="showSplitLine('X')">X轴网格线</el-button>
-      <el-button type="success" @click="showSplitLine('Y')">Y轴网格线</el-button>
-      <el-button type="info" @click="showTick('X')">X轴刻度线</el-button>
-      <el-button type="info" @click="showTick('Y')">Y轴刻度线</el-button> -->
-    </div>
+    <!-- <div class="chart-operation"></div> -->
     <div id="main" class="chart-bar"></div>
   </div>
 </template>
@@ -25,166 +16,50 @@
   export default {
     data() {
       return {
-        newOptions:require('./js/BarLegendOption.js'),
-        options:{},
         myChart:null,
-        newOption:{
-    // 背景颜色
-    backgroundColor: '#061C4C',
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow'
-      },
-      backgroundColor: 'rgba(13, 41, 102, 0.8)',
-      borderColor: 'transparent',
-      textStyle: {
-        color: '#fff',
-        fontSize: 16,
-        fontFamily: 'Noto Sans SC'
-      },
-    },
-    grid: {
-      top: '25%',
-      right: '15%',
-      left: "15%",
-      bottom: '25%'
-    },
-    xAxis: [{
-      // name: "月份",
-      type: 'category',
-      // data: ["一月","二月","三月","四月","五月"],
-      axisLine: {
-        lineStyle: {
-          color: '#FFFFFF'
-        }
-      },
-      axisLabel: {
-          margin: 10,
-          color: '#e2e9ff',
-          textStyle: {
-              fontSize: 12
+        options:{
+          legend: {
+            // 朝向 vertical // 垂直显示 或者  horizontal // 水平显示
+            orient: 'horizontal',
+            // 图例在X轴方向上的位置 left
+            x:'center',
+            // 在Y轴方向上的位置 top
+            y:'top'
           },
-      },
-      axisTick: {
-          show: false
+          grid: {
+            top: '5%',
+            right: '5%',
+            left: "10%",
+            bottom: '10%'
+          },
+          xAxis: [{
+            type: 'category',
+            data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+          }],
+          yAxis: [{
+            type:'value'
+          }],
+          series: [{
+            name: '2011',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
+          },
+          {
+            name: '2012',
+            type: 'bar',
+            data: [19325, 23438, 31000, 121594, 134141, 681807]
+          }],
+        }
       }
-    }],
-    yAxis: [{
-      name: "单位:万套",
-      // splitNumber:4,
-      interval:25, 
-      // rgba(230, 247, 255, 0.7)
-      nameTextStyle:{
-        color:'rgba(230, 247, 255, 0.7)',
-        fontSize:12,
-        fontFamily: 'Noto Sans SC',
-      },
-      axisLabel: {
-        formatter: '{value}',
-        textStyle:{
-          color: '#e2e9ff',
-          fontFamily: 'DIN',
-        }
-      },
-      axisTick: {
-        show: false
-      },
-      axisLine: {
-        show: false,
-        lineStyle: {
-          color: '#FFFFFF'
-        }
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          type: [5, 5],
-          color: '#223464'
-        }
-      },
-    }],
-    series: [{
-      name:'总数',
-      type: 'bar',
-      // data: [2000,1520,1850,3400,2756],
-      barWidth: 20,
-      itemStyle: {
-        normal: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-              offset: 0,
-              color: '#0EECE4' // 0% 处的颜色
-          }, {
-              offset: 1,
-              color: '#058FE7' // 100% 处的颜色
-          }], false),
-          // shadowColor: 'rgba(0,160,221,1)',
-          // shadowBlur: 4,
-        }
-      },
-      label: {
-        normal: {
-            show: false
-        }
-    },
-    data:[
-      {name:'1月',value:90},
-      {name:'2月',value:75},
-      {name:'3月',value:45},
-      {name:'4月',value:70},
-      {name:'5月',value:52}]
-    }],
-}
-      }
-    },
-    created(){
-
     },
     mounted(){
-      const option = require('./js/BarLegendOption.js');
-      this.myEcharts(option)
-      
+      this.myEcharts()
     },
     methods:{
       /* 初始化echarts图标 */
-      myEcharts(options){
-        // console.log(options)
+      myEcharts(){
         this.myChart = this.$echarts.init(document.getElementById('main'));
-        console.log('options',options)
-        this.myChart.setOption(this.newOption)
-      },
-      /* 控制X轴和Y轴的网格线显示 */
-      showSplitLine(axisType){
-        if(axisType === 'X'){
-          this.options.xAxis.splitLine.show = !this.options.xAxis.splitLine.show
-          this.setOptions()
-        }else{
-          this.options.yAxis.splitLine.show = !this.options.yAxis.splitLine.show
-          this.setOptions()
-        }
-      },
-      /* 控制X轴和Y轴的轴线显示 */
-      showAxisLineShow(axisType){
-        if(axisType === 'X'){
-          this.options.xAxis.axisLine.show = !this.options.xAxis.axisLine.show
-          this.setOptions()
-        }else{
-          this.options.yAxis.axisLine.show = !this.options.yAxis.axisLine.show
-          this.setOptions()
-        }
-      },
-      /* 控制X轴和Y轴的刻度线显示 */
-      showTick(axisType){
-        if(axisType === 'X'){
-          this.options.xAxis.axisTick.show = !this.options.xAxis.axisTick.show
-          this.setOptions()
-        }else{
-          this.options.yAxis.axisTick.show = !this.options.yAxis.axisTick.show
-          this.setOptions()
-        }
-      },
-      // 统一设置options
-      setOptions(){
+        console.log('this.options',this.options)
         this.myChart.setOption(this.options)
       }
     }
@@ -202,7 +77,96 @@
 ```
 :::
 
-## 图例(Legend)
-## 系列(Series)
-## 悬浮窗(Tooltip)
-## 工具箱(ToolBox)
+## 图例样式(Legend)
+|属性|说明|类型|
+|----|----|---|
+|backgroundColor|背景颜色|
+|borderColor|边框颜色|
+|borderWidth|边框宽度|Number|
+|padding|内边距|Number|
+|itemGap|图例每项之间的距离|Number|
+注意：边框宽度和内边距属性值为数值，不加单位。
+::: demo 
+```html
+<template>
+  <div class="wrap">
+    <!-- <div class="chart-operation"></div> -->
+    <div id="main-2" class="chart-bar"></div>
+  </div>
+</template>
+
+<script>
+  const echarts = require('echarts');
+  export default {
+    data() {
+      return {
+        myChart:null,
+        options:{
+          legend: {
+            // 朝向 vertical // 垂直显示 或者  horizontal // 水平显示
+            orient: 'horizontal',
+            // 图例在X轴方向上的位置 left
+            x:'center',
+            // 在Y轴方向上的位置 top
+            y:'top',
+            // 背景颜色
+            backgroundColor: '#fac858',
+            // 边框颜色
+            borderColor: '#5470c6',
+            // 边框宽度
+            borderWidth: '2',
+            // 控制每一项的间距，也就是图例之间的距离属性值为数值，不带单位
+            itemGap:100,
+            // 内边距 顺序>上右下左
+            padding: [5,10,5,10],
+          },
+          grid: {
+            top: '5%',
+            right: '5%',
+            left: "10%",
+            bottom: '10%'
+          },
+          xAxis: [{
+            type: 'category',
+            data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+          }],
+          yAxis: [{
+            type:'value'
+          }],
+          series: [{
+            name: '2011',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
+          },
+          {
+            name: '2012',
+            type: 'bar',
+            data: [19325, 23438, 31000, 121594, 134141, 681807]
+          }],
+        }
+      }
+    },
+    mounted(){
+      this.myEcharts()
+    },
+    methods:{
+      /* 初始化echarts图标 */
+      myEcharts(){
+        this.myChart = this.$echarts.init(document.getElementById('main-2'));
+        console.log('this.options',this.options)
+        this.myChart.setOption(this.options)
+      }
+    }
+  }
+</script>
+<style>
+.chart-bar{
+  width:100%;
+  height:400px;
+}
+.chart-operation{
+  margin-bottom:20px;
+}
+</style>
+```
+:::
